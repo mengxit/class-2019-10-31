@@ -1,0 +1,30 @@
+---
+title: "Oct 31st"
+author: "Mengxi Tan"
+date: "10/31/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(googlesheets4)
+library(tidyverse)
+
+sheets_deauth()
+
+train <- read_sheet("1QV7o63fiZdNtMtLQfdwREapf8eYDjpfSRX0dgfNrB8A")
+
+
+```
+
+```{r regression}
+test <- lm(att_start ~ age, data = train)
+
+ggplot(train, aes(att_start)) + geom_histogram(binwidth = 1)
+
+graph1<- ggplot(train, aes(x = liberal, y = att_start, group = liberal)) + geom_boxplot() +
+labs(x = "liberal", y = "att_start")
+```
+
+
